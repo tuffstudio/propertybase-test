@@ -63,7 +63,13 @@ include 'includes/listing-connection.php'
   <!-- END EMPTY RESULT --> 
 
     <!-- BEGIN RESULT -->
-                
+   
+<?php 
+ // VARS
+  $listing_type = $xmlResult->listings->listing->data->pba__listingtype__c;
+  $tenure = $xmlResult->listings->listing->data->tenure__c;
+
+ ?>
       <div id="result">
 
                   <h3 class="mainTitle"><?php echo  $xmlResult->listings->listing->data->name; ?></h3>   
@@ -169,6 +175,7 @@ include 'includes/listing-connection.php'
             <div class="single_view_info_header">
                <h3 class="itemFact"><?php echo  $item->data->name; ?></h3>
                <strong>&#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></strong>
+               <p><?php echo $item->data->tenure__c; ?></p>
                <p> 
                <?php
                 $listing_bedrooms = $item->data->pba__bedrooms_pb__c;
@@ -189,17 +196,36 @@ include 'includes/listing-connection.php'
             <div class="panel half_width">  
                         <ul class="itemFacts">
                           <li><h4>FAST FACTS</h4></li>
-                          <li class="itemFact">Id: <?php echo  $item->data->id; ?></li>
-                          <li class="itemFact">Room list: <?php echo  $item->data->room_list__c; ?></li>
-                          <li class="itemFact">Council Tax Band: <?php echo  $item->data->council_tax_band__c; ?></li>
-                          <li class="itemFact">Local Authority: <?php echo  $item->data->local_authority__c; ?></li>
-                          <li class="itemFact">Years Remaining: <?php echo  $item->data->years_remaining_leasehold_only__c; ?></li>
-                          <li class="itemFact">Price: $<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
-                          <li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>
+                          <br>
                           <li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>
+                          
+                          <!-- IF RENT -->
+                          <?php if($listing_type == 'Rent'){ ?>
+                          <li class="itemFact">Weekly Rent: <?php $weekly = number_format((float)$item->data->weekly_rent__c); $monthly = number_format((float)($weekly * 52)/12); echo  '&#163;'.$weekly.' (&#163;'.$monthly.'/month)'; ?></li>
+                          <?php } ?>
+                          <!-- IF RENT END -->
+                          
+                          <!-- IF LEASHOLD -->
+                          <?php if( $tenure == 'Leasehold' ){ ?>
+                          <li class="itemFact">Years Remaining: <?php echo  $item->data->years_remaining_leasehold_only__c; ?></li>
+                          <?php } ?>
+                          <!-- IF LEASHOLD END-->
+
+                          <!-- IF SALE -->
+                          <?php if($listing_type == 'Sale'){ ?>
+                          <li class="itemFact">Price: &#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
+                          <?php } ?>
+                          <!-- IF SALE END-->
+                          
+                          <li class="itemFact">Room list: <?php echo  $item->data->room_list__c; ?></li>
+                          <li class="itemFact">Local Authority: <?php echo  $item->data->local_authority__c; ?></li>
+                          <li class="itemFact">Council Tax Band: <?php echo  $item->data->council_tax_band__c; ?></li>
+                          <li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>
+                          <li class="itemFact">Baths: <?php echo  $item->data->pba__fullbathrooms_pb__c; ?></li>
                           <li class="itemFact">Sq.ft: <?php echo  number_format((float) $item->data->pba__totalarea_pb__c); ?></li>
-                          <li class="itemFact">lat & long: <?php echo  $item->data->pba__latitude_pb__c .' | '. $item->data->pba__longitude_pb__c; ?></li>
-                          <li class="itemFact">Video: <a href="<?php echo $item->media->videos->video->url; ?>"><?php echo $item->media->videos->video->title; ?></a> </li>  
+                          <br>
+                          <li class="itemFact"><em>lat & long: <?php echo  $item->data->pba__latitude_pb__c .' | '. $item->data->pba__longitude_pb__c; ?></em></li>
+                          <li class="itemFact"><em>Video: <a href="<?php echo $item->media->videos->video->url; ?>"><?php echo $item->media->videos->video->title; ?></a></em> </li>  
                        </ul>
             </div> <!-- // end panel --> 
           </div> <!-- // end single_view_info  --> 

@@ -66,49 +66,49 @@
 				<?php if(isset($recordtypes) && ($recordtypes == 'sale') ){ ?>
 				<select name="price_from">
 					<option value="0">No Min</option>
-					<option value="500000">500,000</option>
-					<option value="550000">550,000</option>
-					<option value="600000">600,000</option>
-					<option value="650000">650,000</option>
-					<option value="700000">700,000</option>
-					<option value="750000">750,000</option>
-					<option value="800000">800,000</option>
-					<option value="900000">900,000</option>
-					<option value="1000000">1,000,000</option>
-					<option value="1100000">1,100,000</option>
-					<option value="1200000">1,200,000</option>
-					<option value="1300000">1,300,000</option>
-					<option value="1400000">1,400,000</option>
-					<option value="1500000">1,500,000</option>
-					<option value="1750000">1,750,000</option>
-					<option value="2000000">2,000,000</option>
-					<option value="2500000">2,500,000</option>
+					<option value="500000">&#163;500,000</option>
+					<option value="550000">&#163;550,000</option>
+					<option value="600000">&#163;600,000</option>
+					<option value="650000">&#163;650,000</option>
+					<option value="700000">&#163;700,000</option>
+					<option value="750000">&#163;750,000</option>
+					<option value="800000">&#163;800,000</option>
+					<option value="900000">&#163;900,000</option>
+					<option value="1000000">&#163;1,000,000</option>
+					<option value="1100000">&#163;1,100,000</option>
+					<option value="1200000">&#163;1,200,000</option>
+					<option value="1300000">&#163;1,300,000</option>
+					<option value="1400000">&#163;1,400,000</option>
+					<option value="1500000">&#163;1,500,000</option>
+					<option value="1750000">&#163;1,750,000</option>
+					<option value="2000000">&#163;2,000,000</option>
+					<option value="2500000">&#163;2,500,000</option>
 				</select>
 
 				<select name="price_to">
 					<option value="0">No Max</option>
-					<option value="500000">500,000</option>
-					<option value="550000">550,000</option>
-					<option value="600000">600,000</option>
-					<option value="650000">650,000</option>
-					<option value="700000">700,000</option>
-					<option value="750000">750,000</option>
-					<option value="800000">800,000</option>
-					<option value="900000">900,000</option>
-					<option value="1000000">1,000,000</option>
-					<option value="1100000">1,100,000</option>
-					<option value="1200000">1,200,000</option>
-					<option value="1300000">1,300,000</option>
-					<option value="1400000">1,400,000</option>
-					<option value="1500000">1,500,000</option>
-					<option value="1750000">1,750,000</option>
-					<option value="2000000">2,000,000</option>
-					<option value="2500000">2,500,000</option>
-					<option value="3000000">3,000,000</option>
-					<option value="3500000">3,500,000</option>
-					<option value="4000000">4,000,000</option>
-					<option value="4500000">4,500,000</option>
-					<option value="5000000">5,000,000</option>
+					<option value="500000">&#163;500,000</option>
+					<option value="550000">&#163;550,000</option>
+					<option value="600000">&#163;600,000</option>
+					<option value="650000">&#163;650,000</option>
+					<option value="700000">&#163;700,000</option>
+					<option value="750000">&#163;750,000</option>
+					<option value="800000">&#163;800,000</option>
+					<option value="900000">&#163;900,000</option>
+					<option value="1000000">&#163;1,000,000</option>
+					<option value="1100000">&#163;1,100,000</option>
+					<option value="1200000">&#163;1,200,000</option>
+					<option value="1300000">&#163;1,300,000</option>
+					<option value="1400000">&#163;1,400,000</option>
+					<option value="1500000">&#163;1,500,000</option>
+					<option value="1750000">&#163;1,750,000</option>
+					<option value="2000000">&#163;2,000,000</option>
+					<option value="2500000">&#163;2,500,000</option>
+					<option value="3000000">&#163;3,000,000</option>
+					<option value="3500000">&#163;3,500,000</option>
+					<option value="4000000">&#163;4,000,000</option>
+					<option value="4500000">&#163;4,500,000</option>
+					<option value="5000000">&#163;5,000,000</option>
 				</select>
 				<br>
 				 <!-- END IF SALE + IF RENT -->
@@ -116,46 +116,46 @@
 
 					<select name="price_from">
 					<option value="0">No Min rent</option>
-					<option value="300">300</option>
-					<option value="350">350</option>
-					<option value="400">400</option>
-					<option value="450">450</option>
-					<option value="500">500</option>
-					<option value="550">500</option>
-					<option value="600">600</option>
-					<option value="650">650</option>
-					<option value="700">700</option>
-					<option value="750">750</option>
-					<option value="800">800</option>
-					<option value="1000">1,000</option>
-					<option value="1500">1,500</option>
-					<option value="2000">2,000</option>
-					<option value="2500">2,500</option>
-					<option value="3000">3,000</option>
+					<option value="300">&#163;300 <?php echo '(&#163;'. number_format((float)(300*52)/12) .'/month)'; ?></option>
+					<option value="350">&#163;350 <?php echo '(&#163;'. number_format((float)(350*52)/12) .'/month)'; ?></option>
+					<option value="400">&#163;400 <?php echo '(&#163;'. number_format((float)(400*52)/12) .'/month)'; ?></option>
+					<option value="450">&#163;450 <?php echo '(&#163;'. number_format((float)(450*52)/12) .'/month)'; ?></option>
+					<option value="500">&#163;500 <?php echo '(&#163;'. number_format((float)(500*52)/12) .'/month)'; ?></option>
+					<option value="550">&#163;550 <?php echo '(&#163;'. number_format((float)(550*52)/12) .'/month)'; ?></option>
+					<option value="600">&#163;600 <?php echo '(&#163;'. number_format((float)(600*52)/12) .'/month)'; ?></option>
+					<option value="650">&#163;650 <?php echo '(&#163;'. number_format((float)(650*52)/12) .'/month)'; ?></option>
+					<option value="700">&#163;700 <?php echo '(&#163;'. number_format((float)(700*52)/12) .'/month)'; ?></option>
+					<option value="750">&#163;750 <?php echo '(&#163;'. number_format((float)(750*52)/12) .'/month)'; ?></option>
+					<option value="800">&#163;800 <?php echo '(&#163;'. number_format((float)(800*52)/12) .'/month)'; ?></option>
+					<option value="1000">&#163;1,000 <?php echo '(&#163;'. number_format((float)(1000*52)/12) .'/month)'; ?></option>
+					<option value="1500">&#163;1,500 <?php echo '(&#163;'. number_format((float)(1500*52)/12) .'/month)'; ?></option>
+					<option value="2000">&#163;2,000 <?php echo '(&#163;'. number_format((float)(2000*52)/12) .'/month)'; ?></option>
+					<option value="2500">&#163;2,500 <?php echo '(&#163;'. number_format((float)(2500*52)/12) .'/month)'; ?></option>
+					<option value="3000">&#163;3,000 <?php echo '(&#163;'. number_format((float)(3000*52)/12) .'/month)'; ?></option>
 				</select>
 
 				<select name="price_to">
 					<option value="0">No Max rent</option>
-					<option value="300">300</option>
-					<option value="350">350</option>
-					<option value="400">400</option>
-					<option value="450">450</option>
-					<option value="500">500</option>
-					<option value="550">500</option>
-					<option value="600">600</option>
-					<option value="650">650</option>
-					<option value="700">700</option>
-					<option value="750">750</option>
-					<option value="800">800</option>
-					<option value="1000">1,000</option>
-					<option value="1500">1,500</option>
-					<option value="2000">2,000</option>
-					<option value="2500">2,500</option>
-					<option value="3000">3,000</option>
-					<option value="3500">3,500</option>
-					<option value="4000">4,000</option>
-					<option value="4500">4,500</option>
-					<option value="5000">5,000</option>
+					<option value="300">&#163;300 <?php echo '(&#163;'. number_format((float)(300*52)/12) .'/month)'; ?></option>
+					<option value="350">&#163;350 <?php echo '(&#163;'. number_format((float)(350*52)/12) .'/month)'; ?></option>
+					<option value="400">&#163;400 <?php echo '(&#163;'. number_format((float)(400*52)/12) .'/month)'; ?></option>
+					<option value="450">&#163;450 <?php echo '(&#163;'. number_format((float)(450*52)/12) .'/month)'; ?></option>
+					<option value="500">&#163;500 <?php echo '(&#163;'. number_format((float)(500*52)/12) .'/month)'; ?></option>
+					<option value="550">&#163;550 <?php echo '(&#163;'. number_format((float)(550*52)/12) .'/month)'; ?></option>
+					<option value="600">&#163;600 <?php echo '(&#163;'. number_format((float)(600*52)/12) .'/month)'; ?></option>
+					<option value="650">&#163;650 <?php echo '(&#163;'. number_format((float)(650*52)/12) .'/month)'; ?></option>
+					<option value="700">&#163;700 <?php echo '(&#163;'. number_format((float)(700*52)/12) .'/month)'; ?></option>
+					<option value="750">&#163;750 <?php echo '(&#163;'. number_format((float)(750*52)/12) .'/month)'; ?></option>
+					<option value="800">&#163;800 <?php echo '(&#163;'. number_format((float)(800*52)/12) .'/month)'; ?></option>
+					<option value="1000">&#163;1,000 <?php echo '(&#163;'. number_format((float)(1000*52)/12) .'/month)'; ?></option>
+					<option value="1500">&#163;1,500 <?php echo '(&#163;'. number_format((float)(1500*52)/12) .'/month)'; ?></option>
+					<option value="2000">&#163;2,000 <?php echo '(&#163;'. number_format((float)(2000*52)/12) .'/month)'; ?></option>
+					<option value="2500">&#163;2,500 <?php echo '(&#163;'. number_format((float)(2500*52)/12) .'/month)'; ?></option>
+					<option value="3000">&#163;3,000 <?php echo '(&#163;'. number_format((float)(3000*52)/12) .'/month)'; ?></option>
+					<option value="3500">&#163;3,500 <?php echo '(&#163;'. number_format((float)(3500*52)/12) .'/month)'; ?></option>
+					<option value="4000">&#163;4,000 <?php echo '(&#163;'. number_format((float)(4000*52)/12) .'/month)'; ?></option>
+					<option value="4500">&#163;4,500 <?php echo '(&#163;'. number_format((float)(4500*52)/12) .'/month)'; ?></option>
+					<option value="5000">&#163;5,000 <?php echo '(&#163;'. number_format((float)(5000*52)/12) .'/month)'; ?></option>
 				</select>
 				<br>
 
@@ -340,7 +340,7 @@
     				    <?php }; ?>
     				    
     				    <ul>
-							<li class="itemFact">Price: $<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>			
+							<li class="itemFact">Price: &#163;<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>			
 							<li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>	
 							<li class="itemFact">Baths: <?php echo  $item->data->pba__fullbathrooms_pb__c; ?></li>			
 							<li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>	
