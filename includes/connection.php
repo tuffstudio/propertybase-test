@@ -12,6 +12,7 @@ $orderby = ""; //*
 $itemsperpage ="";//- 20
 $recordtypes ="sale;rent";//= 
 $propertytype ="";//+
+$tenure ="";//+
 $propertystatus ="";
 
 // SECURE CONNECTION SETUP
@@ -70,6 +71,12 @@ function getFromToParam($from,$to){
 	}else{ 
 		$default_propertytype = $_POST["propertytype"];
 	}
+	//TENURE
+	if (empty($_POST["tenure"])){
+		$default_tenure = ""; //=
+	}else{ 
+		$default_tenure = $_POST["tenure"];
+	}
 	//PROPERTYSTATUS
 	if (empty($_POST["propertystatus"])){
 		$default_propertystatus = ""; //=
@@ -90,6 +97,7 @@ if(isset($_POST["orderby"])){$orderby 					= $default_orderby ;} //*
 if(isset($_POST["itemsperpage"])){$itemsperpage 		= $default_perpage ;} //-
 if(isset($_POST["recordtypes"])){$recordtypes 			= $default_recordtypes ;} //=
 if(isset($_POST["propertytype"])){$propertytype 		= $default_propertytype;} //+
+if(isset($_POST["tenure"])){$tenure 					= $default_tenure;} //+
 if(isset($_POST["propertystatus"])){$propertystatus 	= $default_propertystatus;} //p
 if(isset($_POST["page"])){$page 						= $_POST["page"];}
 
@@ -123,7 +131,7 @@ $errorMessage 	= null;
 
 /////////////// QUERY ARRAY ///////////////
 	$reqArray = array("token" 			=> PB_SECURITYTOKEN,
-					  "fields"			=> "ID;name;pba__ListingType__c;pba__PropertyType__c;pba__Status__c;pba__ListingPrice_pb__c;pba__description_pb__c;pba__Bedrooms_pb__c;pba__FullBathrooms_pb__c;pba__totalarea_pb__c;",
+					  "fields"			=> "ID;name;pba__ListingType__c;pba__PropertyType__c;Tenure__c;pba__Status__c;pba__ListingPrice_pb__c;pba__description_pb__c;pba__Bedrooms_pb__c;pba__FullBathrooms_pb__c;pba__totalarea_pb__c;",
 		              "page" 			=> $page ,
 		              "getvideos"		=> "true",
 		              "debugmode"		=> "true"
@@ -139,7 +147,8 @@ $errorMessage 	= null;
 	if (!empty($default_perpage)) $reqArray["itemsperpage"] 					= $itemsperpage; //-
 	if (!empty($default_recordtypes)) $reqArray["recordtypes"] 					= $recordtypes; //=
 	if (!empty($default_propertytype)) $reqArray["pba__PropertyType__c"] 		= $default_propertytype; //+
-	if (!empty($default_propertystatus)) $reqArray["pba__status__c"] 		= $default_propertystatus; //+
+	if (!empty($default_tenure)) $reqArray["Tenure__c"] 						= $default_tenure; //+
+	if (!empty($default_propertystatus)) $reqArray["pba__status__c"] 			= $default_propertystatus; //+
 	// $reqArray["pba__status__c"] = "Sold";
 
 // BUILD HTTP QUERY STRING

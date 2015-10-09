@@ -47,7 +47,7 @@
 	$errorMessage 	= null;
 	
 	$reqArray = array("token" 			=> PB_SECURITYTOKEN,
-					  "fields"			=> "name;pba__PropertyType__c;pba__ListingPrice_pb__c;pba__Bedrooms_pb__c;pba__FullBathrooms_pb__c;pba__totalarea_pb__c;pba__Description_pb__c;pba__Longitude_pb__c;pba__Latitude_pb__c;pba__Address_pb__c;",
+					  "fields"			=> "name;pba__PropertyType__c;Room_list__c;Years_Remaining_Leasehold_only__c;pba__ListingPrice_pb__c;pba__Bedrooms_pb__c;pba__FullBathrooms_pb__c;pba__totalarea_pb__c;pba__Description_pb__c;pba__Longitude_pb__c;pba__Latitude_pb__c;pba__Address_pb__c;",
 					  "itemsperpage"	=> "1",
 					  // "pba__Status__c"	=> "Available",
 					  "page" 			=> $page ,

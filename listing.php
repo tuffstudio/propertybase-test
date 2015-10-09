@@ -196,6 +196,8 @@ include 'includes/listing-connection.php'
                         <ul class="itemFacts">
                           <li><h4>FAST FACTS</h4></li>
                           <li class="itemFact">Id: <?php echo  $item->data->id; ?></li>
+                          <li class="itemFact">Room list: <?php echo  $item->data->room_list__c; ?></li>
+                          <li class="itemFact">Years Remaining: <?php echo  $item->data->years_remaining_leasehold_only__c; ?></li>
                           <li class="itemFact">Price: $<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
                           <li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>
                           <li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>

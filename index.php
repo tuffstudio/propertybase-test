@@ -102,6 +102,13 @@
 					<option value="Townhouse">Townhouse</option>
 					<option value="Villa">Villa</option>
 				</select>
+
+				<select name="tenure">
+					<option value="">Tenure</option>
+					<option value="Leasehold">Leasehold</option>
+					<option value="Freehold">Freehold</option>
+					<option value="Share of Freehold">Share of Freehold</option>
+				</select>
 		
 			<!-- <fieldset> -->
 				<!-- <span class="label">Min. bedrooms</span><em> <?php echo $_POST["bedrooms_from"] ?></em><br/> -->
@@ -221,6 +228,7 @@
 						<input type="hidden" name="itemsperpage" value="<?php echo $itemsperpage;?>">
 						<input type="hidden" name="recordtypes" value="<?php echo $recordtypes;?>">	
 						<input type="hidden" name="propertytype" value="<?php echo $propertytype;?>">
+						<input type="hidden" name="tenure" value="<?php echo $tenure;?>">
 						<input type="hidden" name="propertystatus" value="<?php echo $propertystatus;?>">						
 						<input class="formButton" value="Next Page >>" type="submit">					
 					</form>
@@ -239,6 +247,7 @@
 						<input type="hidden" name="itemsperpage" value="<?php echo $itemsperpage;?>">
 						<input type="hidden" name="recordtypes" value="<?php echo $recordtypes;?>">		
 						<input type="hidden" name="propertytype" value="<?php echo $propertytype;?>">
+						<input type="hidden" name="tenure" value="<?php echo $tenure;?>">
 						<input type="hidden" name="propertystatus" value="<?php echo $propertystatus;?>">					
 						<input class="formButton" value="<< Previous Page" type="submit">					
 					</form>
@@ -265,7 +274,8 @@
 							<li class="itemFact">Price: $<?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>			
 							<li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>	
 							<li class="itemFact">Baths: <?php echo  $item->data->pba__fullbathrooms_pb__c; ?></li>			
-							<li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>			
+							<li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>	
+							<li class="itemFact">Tenure: <?php echo  $item->data->pba__propertytype__c; ?></li>			
 							<li class="itemFact">Sq.ft: <?php echo  number_format((float) $item->data->pba__totalarea_pb__c); ?></li>	
     				    </ul>
     				</div>
@@ -308,6 +318,7 @@
     $("select[name='orderby'] option[value=<?php echo("'".$orderby."'"); ?>]").prop('selected', true);
     <?php 
     	if (!empty($default_propertytype)) echo( "$(\"select[name='propertytype'] option[value='".$default_propertytype."']\").prop('selected', true);");
+    	if (!empty($default_tenure)) echo( "$(\"select[name='tenure'] option[value='".$default_tenure."']\").prop('selected', true);");
     	if (!empty($default_propertystatus)) echo( "$(\"input[name='propertystatus'][value='".$default_propertystatus."']\").prop('checked', true);"); 
     ?>
     
