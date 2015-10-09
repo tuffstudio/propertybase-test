@@ -184,13 +184,7 @@ include 'includes/listing-connection.php'
             <div class="panel half_width" style="height:250px; overflow-y: auto;">  
             <br>
             <p><?php echo $item->data->pba__description_pb__c; ?> </p>
-                        <!-- <ul class="itemFacts">
-                          <li class="itemFact">Price: <?php echo number_format((float) $item->data->pba__listingprice_pb__c); ?></li>
-                          <li class="itemFact">Beds: <?php echo  $item->data->pba__bedrooms_pb__c; ?></li>
-                          <li class="itemFact">Type: <?php echo  $item->data->pba__propertytype__c; ?></li>
-                          <li class="itemFact">Sq.ft: <?php echo  number_format((float) $item->data->pba__totalarea_pb__c); ?></li>
-                          <li class="itemFact"><?php echo substr($item->data->pba__description_pb__c,0,400); if( strlen($item->data->pba__description_pb__c)>400) echo '...' ; ?></li>
-					             </ul> -->
+                
             </div> <!-- // end panel -->  
             <div class="panel half_width">  
                         <ul class="itemFacts">
@@ -209,8 +203,6 @@ include 'includes/listing-connection.php'
                        </ul>
             </div> <!-- // end panel --> 
           </div> <!-- // end single_view_info  --> 
-
-           
 
       </div>
       <!-- END RESULT -->
