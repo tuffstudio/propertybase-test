@@ -59,30 +59,108 @@
 				<input type="text" name="reference" placeholder="Property Address" value="<?php echo $reference;?>" style="width: 170px;">
 				<br>
 				<input class="slider" id="slider1" type="range" min="0" max="100" value="0" oninput="showValue(value, 1);" onchange="showValue(value, 1);" />
+	
 				<!-- // DETECT CURRENT RECORD TYPE -->
-				
-				<!-- <?php echo "<script> console.log('type: ' ".$recordtypes.") </script>"; ?> -->
-				
-				<!-- //////// if SALE or ALL /////////// -->
-				<?php if(isset($recordtypes) && ($recordtypes == 'sale' ||  $recordtypes == 'sale;rent') ){ ?>
+	
+				 <!-- IF SALE -->
+				<?php if(isset($recordtypes) && ($recordtypes == 'sale') ){ ?>
 				<select name="price_from">
-					<option value="0">MIN PRICE</option>
-					<option value="1000">1000</option>
-					<option value="3000">3000</option>
-					<option value="5000">5000</option>
-					<option value="10000">10000</option>
+					<option value="0">No Min</option>
+					<option value="500000">500,000</option>
+					<option value="550000">550,000</option>
+					<option value="600000">600,000</option>
+					<option value="650000">650,000</option>
+					<option value="700000">700,000</option>
+					<option value="750000">750,000</option>
+					<option value="800000">800,000</option>
+					<option value="900000">900,000</option>
+					<option value="1000000">1,000,000</option>
+					<option value="1100000">1,100,000</option>
+					<option value="1200000">1,200,000</option>
+					<option value="1300000">1,300,000</option>
+					<option value="1400000">1,400,000</option>
+					<option value="1500000">1,500,000</option>
+					<option value="1750000">1,750,000</option>
+					<option value="2000000">2,000,000</option>
+					<option value="2500000">2,500,000</option>
 				</select>
 
 				<select name="price_to">
-					<option value="0">MAX PRICE</option>
-					<option value="50000">50k</option>
-					<option value="200000">200k</option>
-					<option value="500000">500k</option>
-					<option value="800000">800k</option>
+					<option value="0">No Max</option>
+					<option value="500000">500,000</option>
+					<option value="550000">550,000</option>
+					<option value="600000">600,000</option>
+					<option value="650000">650,000</option>
+					<option value="700000">700,000</option>
+					<option value="750000">750,000</option>
+					<option value="800000">800,000</option>
+					<option value="900000">900,000</option>
+					<option value="1000000">1,000,000</option>
+					<option value="1100000">1,100,000</option>
+					<option value="1200000">1,200,000</option>
+					<option value="1300000">1,300,000</option>
+					<option value="1400000">1,400,000</option>
+					<option value="1500000">1,500,000</option>
+					<option value="1750000">1,750,000</option>
+					<option value="2000000">2,000,000</option>
+					<option value="2500000">2,500,000</option>
+					<option value="3000000">3,000,000</option>
+					<option value="3500000">3,500,000</option>
+					<option value="4000000">4,000,000</option>
+					<option value="4500000">4,500,000</option>
+					<option value="5000000">5,000,000</option>
 				</select>
 				<br>
+				 <!-- END IF SALE + IF RENT -->
+				<?php }else if(isset($recordtypes) && ($recordtypes == 'rent') ){ ?>
+
+					<select name="price_from">
+					<option value="0">No Min rent</option>
+					<option value="300">300</option>
+					<option value="350">350</option>
+					<option value="400">400</option>
+					<option value="450">450</option>
+					<option value="500">500</option>
+					<option value="550">500</option>
+					<option value="600">600</option>
+					<option value="650">650</option>
+					<option value="700">700</option>
+					<option value="750">750</option>
+					<option value="800">800</option>
+					<option value="1000">1,000</option>
+					<option value="1500">1,500</option>
+					<option value="2000">2,000</option>
+					<option value="2500">2,500</option>
+					<option value="3000">3,000</option>
+				</select>
+
+				<select name="price_to">
+					<option value="0">No Max rent</option>
+					<option value="300">300</option>
+					<option value="350">350</option>
+					<option value="400">400</option>
+					<option value="450">450</option>
+					<option value="500">500</option>
+					<option value="550">500</option>
+					<option value="600">600</option>
+					<option value="650">650</option>
+					<option value="700">700</option>
+					<option value="750">750</option>
+					<option value="800">800</option>
+					<option value="1000">1,000</option>
+					<option value="1500">1,500</option>
+					<option value="2000">2,000</option>
+					<option value="2500">2,500</option>
+					<option value="3000">3,000</option>
+					<option value="3500">3,500</option>
+					<option value="4000">4,000</option>
+					<option value="4500">4,500</option>
+					<option value="5000">5,000</option>
+				</select>
+				<br>
+
 				<?php } ?>
-				<!-- //////// end if SALE or ALL /////////// -->
+				 <!-- END IF RENT -->
 				<select name="propertytype">
 					<option value="">Type</option>
 					<option value="Apartment">Apartment</option>
@@ -102,16 +180,16 @@
 					<option value="Townhouse">Townhouse</option>
 					<option value="Villa">Villa</option>
 				</select>
-
-				<select name="tenure">
-					<option value="">Tenure</option>
-					<option value="Leasehold">Leasehold</option>
-					<option value="Freehold">Freehold</option>
-					<option value="Share of Freehold">Share of Freehold</option>
-				</select>
-		
-			<!-- <fieldset> -->
-				<!-- <span class="label">Min. bedrooms</span><em> <?php echo $_POST["bedrooms_from"] ?></em><br/> -->
+				 <!-- IF SALE -->
+					<?php if(isset($recordtypes) && ($recordtypes == 'sale') ){ ?> 
+					<select name="tenure">
+						<option value="">Tenure</option>
+						<option value="Leasehold">Leasehold</option>
+						<option value="Freehold">Freehold</option>
+						<option value="Share of Freehold">Share of Freehold</option>
+					</select>
+				<?php } ?>		
+				<!-- END IF SALE -->
 				<select name="bedrooms_from">
 					<option value="1">Bedrooms</option>
 					<option value="2">2</option>
@@ -119,24 +197,15 @@
 					<option value="4">4</option>
 					<option value="5">5+</option>
 				</select>
-			<!-- </fieldset> -->
+
 			<br>
-			<select name="bathrooms_from">
+				<select name="bathrooms_from">
 					<option value="1">Bathrooms</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
 					<option value="5">5+</option>
 				</select>
-			<!-- <input class="formButton" value="Search" type="submit"> -->
-			<!-- <input type="text" name="size_from" placeholder="Sqm from" value="<?php echo $size_from;?>" style="width: 80px;"> -->
-			<!-- <select name="size_from">
-					<option value="0">Sq.ft</option>
-					<option value="500">500</option>
-					<option value="1000">1000</option>
-					<option value="1500">1500</option>
-					<option value="2000">2000+</option>
-				</select> -->
 
 				<div class="filter__submit">
 						<a href="#" class="js-clear-all-filters">Clear Filters</a>
