@@ -77,6 +77,7 @@ include 'includes/listing-connection.php'
                   <div class="single_view_navigation">
                     <ul>
                       <li><a id="single_view_nav_gallery" href="#">Gallery</a></li>
+                      <li><a id="single_view_nav_floorplan" href="#">Floor Plan</a></li>
                       <li><a id="single_view_nav_map" href="#">Map</a></li>
                       <li><a id="single_view_nav_video" href="#">Video</a></li>
                     </ul>
@@ -89,15 +90,33 @@ include 'includes/listing-connection.php'
                         <?php if ($item->media->images->image != null && count($item->media->images->image) > 0): ?>
                           <div class="gallery">
                             <?php $i = 0; foreach ($item->media->images->image as $image): ?>
-                            <div class="gallery-cell">
-                              <img class="itemImage" src="<?php echo $item->media->images->image[$i]->baseurl . "/" . $item->media->images->image[$i]->filename; ?>"/>
-                              <?php $i++; ?>
-                             </div> 
+                            <!-- exclude floorplan from gallery flow -->
+                            <?php if ($image->tags != 'Floorplan Quick (JPG)') {?>
+                              <div class="gallery-cell">
+                                <img class="itemImage" src="<?php echo $item->media->images->image[$i]->baseurl . "/" . $item->media->images->image[$i]->filename; ?>"/>
+                                <?php $i++; ?>
+                              </div> 
+                             <?php } ?>
+
                             <?php endforeach; ?>
                           </div>
                       <?php endif; ?>
                     <!-- END GALLERY -->
+                    
+                    <!-- BEGIN END FLOORPLAN -->
+                    <div id="floorplan_container">
+                      <?php foreach ($xmlResult->listings->listing as $item): ?>
+                        <?php if ($item->media->images->image != null && count($item->media->images->image) > 0): ?>
 
+                        <?php if ($image->tags == 'Floorplan Quick (JPG)') {?>
+                                <img style="max-height:700px; margin-left:200px;" class="itemImage" src="<?php echo $item->media->images->image[$i]->baseurl . "/" . $item->media->images->image[$i]->filename; ?>"/>
+                        <?php } ?>
+
+                        <?php endif; ?>
+                      <?php endforeach; ?>
+                    </div>
+                    <!-- END FLOORPLAN -->
+                    
                     <!-- BEGIN MAP -->
                      
                       <div id="map_container">

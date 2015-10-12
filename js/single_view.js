@@ -1,17 +1,19 @@
 //VARS
 
-var $gallery_view = $('.gallery');
-var $map_view = $('#map_container');
-var $video_view = $('#myvid');
-var $single_view_divs = $('.single_view_media > div');
+var gallery_view = $('.gallery');
+var floorplan_view = $('#floorplan_container');
+var map_view = $('#map_container');
+var video_view = $('#myvid');
+var single_view_divs = $('.single_view_media > div');
 var video1;
 
 // Initialize Unversal Player
-function Initialize_Unversal_Player(){
+function Initialize_Unversal_Player() {
 
 	// inject html structure
-	if(external == 'false'){
-		$('#myvid').html('<div class="px-video-img-captions-container"><div class="px-video-captions hide"></div><div class="px-video-wrapper"><video poster="img/poster.jpg" class="px-video" controls ><source src='+video_url+' type="video/mp4" /><div><a href='+video_url+'><img src="img/poster.jpg" width="640" height="360" alt="download video" /></a></div></video></div></div><div class="px-video-controls"></div>');
+	if(external == 'false') {
+		'use strict';
+		$('#myvid').html('<div class="px-video-img-captions-container"><div class="px-video-captions hide"></div><div class="px-video-wrapper"><video poster="img/poster.jpg" class="px-video" controls ><source src='+video_url+' type="video/mp4" /><div><a href=' + video_url + '><img src="img/poster.jpg" width="640" height="360" alt="download video" /></a></div></video></div></div><div class="px-video-controls"></div>');
 
 		//init UVP
 		video1 = new InitPxVideo({
@@ -25,21 +27,21 @@ function Initialize_Unversal_Player(){
 		//Autoplay video after init - optional
 		playVid();
 
-	}else if(external == 'true'){
-		$('#myvid').html('<iframe width="100%" height="500" src="'+youtube_url+'"></iframe>');
+	}else if(external === 'true') {
+		$('#myvid').html('<iframe width="100%" height="500" src="' + youtube_url + '"></iframe>');
 	}
 	
 
 }
 
-function playVid(){
+function playVid() {
 	obj.movie.play();
 	obj.btnPlay.className = "px-video-play hide";
 	obj.btnPause.className = "px-video-pause px-video-show-inline";
 	obj.btnPause.focus();
 }
 
-function pauseVid(){
+function pauseVid() {
 	obj.movie.pause(); 
    	obj.btnPlay.className = "px-video-play px-video-show-inline";
 	obj.btnPause.className = "px-video-pause hide";
@@ -62,10 +64,10 @@ function pauseVid(){
 
     		    // if lat & lng defined load map
     		    if(lat != undefined && lng != undefined){
-    		    	$('.gallery , #myvid').fadeOut(200);
+    		    	$('.gallery , #myvid , #floorplan_container').fadeOut(200);
 
 						// $single_view_divs.fadeOut(200, function(ev) {
-						$map_view.fadeIn(300);
+						map_view.fadeIn(300);
 					}else{
 						alert('no longitude and latitude');
 					}
@@ -77,9 +79,20 @@ function pauseVid(){
     			// if video player has been initialised
     		    if(video1 != undefined){ pauseVid(); }
 
-    		     $('#map_container , #myvid').fadeOut(200);	
+    		     $('#map_container , #myvid , #floorplan_container').fadeOut(200);	
 				// $single_view_divs.fadeOut(200, function(ev) {
-					$gallery_view.fadeIn(300);
+					gallery_view.fadeIn(300);
+				// });
+    		    break;
+
+    		case 'single_view_nav_floorplan':
+    			
+    			// if video player has been initialised
+    		    if(video1 != undefined){ pauseVid(); }
+
+    		     $('#map_container , #myvid , .gallery').fadeOut(200);	
+				// $single_view_divs.fadeOut(200, function(ev) {
+					floorplan_view.fadeIn(300);
 				// });
     		    break;
     		
@@ -98,9 +111,9 @@ function pauseVid(){
     		    	}
 
     		    	if( video_url != undefined ){
-    		    		$('#map_container , .gallery').fadeOut(200);	
+    		    		$('#map_container , .gallery , #floorplan_container').fadeOut(200);	
 						// $single_view_divs.fadeOut(200, function(ev) {
-						$video_view.fadeIn(300);
+						video_view.fadeIn(300);
 						// });
 					}
     		    break;
