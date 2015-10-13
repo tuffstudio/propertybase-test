@@ -47,7 +47,7 @@
 	$errorMessage 	= null;
 	
 	$reqArray = array("token" 			=> PB_SECURITYTOKEN,
-					  "fields"			=> "pba__ListingType__c;name;pba__PropertyType__c;Weekly_Rent__c;Room_list__c;Tenure__c;Council_Tax_Band__c;Local_Authority__c;Years_Remaining_Leasehold_only__c;pba__ListingPrice_pb__c;pba__Bedrooms_pb__c;pba__FullBathrooms_pb__c;pba__totalarea_pb__c;pba__Description_pb__c;pba__Longitude_pb__c;pba__Latitude_pb__c;pba__Address_pb__c;",
+					  "fields"			=> "pba__ListingType__c;name;pba__PropertyType__c;Weekly_Rent__c;Room_list__c;Tenure__c;Council_Tax_Band__c;Local_Authority__c;Years_Remaining_Leasehold_only__c;pba__ListingPrice_pb__c;pba__Bedrooms_pb__c;pba__FullBathrooms_pb__c;pba__totalarea_pb__c;pba__Description_pb__c;pba__Longitude_pb__c;pba__Latitude_pb__c;pba__Address_pb__c;FF_Award__c;FF_Bottle__c;FF_Brick__c;FF_Built__c;FF_Champagne__c;FF_Designer__c;FF_Elephant__c;FF_Extension__c;FF_Fireplace__c;FF_Garden__c;FF_Gym__c;FF_Lift__c;FF_Listed_Grade_I__c;FF_Listed_Grade_II__c;FF_Map__c;FF_Penthouse__c;FF_Refurbished__c;FF_Stairs__c;FF_View__c;",
 					  "itemsperpage"	=> "1",
 					  // "pba__Status__c"	=> "Available",
 					  "page" 			=> $page ,

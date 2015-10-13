@@ -13,6 +13,7 @@ include 'includes/listing-connection.php'
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.1/flickity.css" media="screen">
 <link rel="stylesheet" href="css/px-video.css" />
 <link rel="stylesheet" type="text/css" href="css/pb-style.css">
+<link rel="stylesheet" type="text/css" href="css/fontello.css">
 
 <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script> -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -288,6 +289,27 @@ include 'includes/listing-connection.php'
                           <?php } ?>
                           <!-- IF SALE END-->
                           
+                          <br>
+                          <?php if(!empty($item->data->ff_award__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-award"></i><?php echo $item->data->ff_award__c; ?></li>
+                          <?php } ?>
+                           <?php if(!empty($item->data->ff_bottle__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-beaker"></i><?php echo $item->data->ff_bottle__c; ?></li>
+                          <?php } ?>
+                           <?php if(!empty($item->data->ff_brick__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-tag"></i><?php echo $item->data->ff_brick__c; ?></li>
+                          <?php } ?>
+                           <?php if(!empty($item->data->ff_built__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-thumbs-up"></i><?php echo $item->data->ff_built__c; ?></li>
+                          <?php } ?>
+                           <?php if(!empty($item->data->ff_champagne__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-wine"></i><?php echo $item->data->ff_champagne__c; ?></li>
+                          <?php } ?>
+                           <?php if(!empty($item->data->ff_desiner__c)){ ?>
+                            <li class="itemFact"><i class="demo-icon icon-user"></i><?php echo $item->data->ff_desiner__c; ?></li>
+                          <?php } ?>
+                          <br>
+
                           <li class="itemFact">Room list: <?php echo  $item->data->room_list__c; ?></li>
                           <li class="itemFact">Local Authority: <?php echo  $item->data->local_authority__c; ?></li>
                           <li class="itemFact">Council Tax Band: <?php echo  $item->data->council_tax_band__c; ?></li>
