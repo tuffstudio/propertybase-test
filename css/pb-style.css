@@ -153,6 +153,18 @@ h3.mainTitle{
 
 .in { opacity: 1; }
 
+/*/////// FLOORPLAN /////////*/
+
+#floorplan_container{
+	display: none;
+}
+
+/*/////// EPC /////////*/
+
+#epc_container{
+	display: none;
+}
+
 /*/////// VIDEO /////////*/
 
 #myvid{
@@ -162,9 +174,7 @@ h3.mainTitle{
 /*/////// MAP /////////*/
 
 #map_container{
-	position: absolute;
 	top:90px;
-	/*right: 20px;*/
 	left:0;
 	z-index: -1!important;
 	overflow:hidden;

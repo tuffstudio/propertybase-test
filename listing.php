@@ -1,10 +1,6 @@
-<?php 
+<?php include 'includes/listing-connection.php' ?>
 
-// header('X-Frame-Options: GOFORIT'); 
-
-include 'includes/listing-connection.php' 
-
-?>
+<html>
 
 <head>
 <title>Propertybase Australia</title>
@@ -15,18 +11,15 @@ include 'includes/listing-connection.php'
 <link rel="stylesheet" type="text/css" href="css/pb-style.css">
 <link rel="stylesheet" type="text/css" href="css/fontello.css">
 
-<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script> -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.1/flickity.pkgd.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
-<html>
-
 </head>
 
 <body>
-<!-- VARS -->
+<!-- JS VARS -->
 <script>
   var lat;
   var lng;
