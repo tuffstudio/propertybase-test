@@ -54,6 +54,7 @@
 					  "id"				=> $_GET['id'],
 					  // "orderby"			=> "pba__ListingPrice_pb__c;ASC",
 					  "getvideos"		=> "true",
+					  "getdocuments"	=> "true",
 		              "debugmode"		=> "true"
 					  );
 	

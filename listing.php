@@ -1,6 +1,6 @@
 <?php 
 
-header('X-Frame-Options: GOFORIT'); 
+// header('X-Frame-Options: GOFORIT'); 
 
 include 'includes/listing-connection.php' 
 
@@ -91,9 +91,9 @@ include 'includes/listing-connection.php'
                           <div class="gallery">
                             <?php $i = 0; foreach ($item->media->images->image as $image): ?>
                             <!-- exclude floorplan from gallery flow -->
-                            <?php if ($image->tags != 'Floorplan Quick (JPG)') {?>
+                            <?php if ($image->tags == 'Interior' || $image->tags == 'Exterior') {?>
                               <div class="gallery-cell">
-                                <img class="itemImage" src="<?php echo $item->media->images->image[$i]->baseurl . "/" . $item->media->images->image[$i]->filename; ?>"/>
+                                <img class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
                                 <?php $i++; ?>
                               </div> 
                              <?php } ?>
@@ -106,13 +106,30 @@ include 'includes/listing-connection.php'
                     <!-- BEGIN END FLOORPLAN -->
                     <div id="floorplan_container">
                       <?php foreach ($xmlResult->listings->listing as $item): ?>
+                        
+                        <!-- if images not empty -->
                         <?php if ($item->media->images->image != null && count($item->media->images->image) > 0): ?>
-
-                        <?php if ($image->tags == 'Floorplan Quick (JPG)') {?>
-                                <img style="max-height:700px; margin-left:200px;" class="itemImage" src="<?php echo $item->media->images->image[$i]->baseurl . "/" . $item->media->images->image[$i]->filename; ?>"/>
-                        <?php } ?>
-
+                         <?php $i = 0; foreach ($item->media->images->image as $image): ?>
+                          <?php if ($image->tags == 'Floorplan Quick (JPG)') {?>
+                                <img style="max-height:700px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
+                          <?php } ?>
+                         <?php endforeach; ?>
                         <?php endif; ?>
+
+                        <!-- if documents not empty -->
+                        <?php if ($item->media->documents->document != null && count($item->media->documents->document) > 0){ ?>
+                          <?php $i = 0; foreach ($item->media->documents->document as $document): ?>
+                              <!-- if floorplan PDF       -->
+                              <?php if ($document->tags == 'Floorplan Enhanced (PDF)') {?>
+                              <br>
+                                <a href="<?php echo $document[$i]->url; ?>" target="_blank">Download Floor Plan PDF</a>
+                              <?php } ?>
+                              
+                              <?php $i++; ?>
+                          <?php endforeach; ?>
+                        <?php } ?>
+                        <!-- end if documents not empty -->
+
                       <?php endforeach; ?>
                     </div>
                     <!-- END FLOORPLAN -->
@@ -208,6 +225,23 @@ include 'includes/listing-connection.php'
                <a href="#" class="arrange_viewing_button beige angle_edges_button open">ARRANGE A VIEWING</a>
             </div><!-- // end single_view_info_header -->
             <div class="panel half_width" style="height:250px; overflow-y: auto;">  
+              <ul class="info_panel_nav">
+
+                      <!-- if documents not empty -->
+                        <?php if ($item->media->documents->document != null && count($item->media->documents->document) > 0){ ?>
+                          <?php $i = 0; foreach ($item->media->documents->document as $document): ?>
+                              <!-- if Brochure PDF -->
+                              <?php if ($document->tags == 'Brochure') {?>
+                                 <li><a href="<?php echo $document[$i]->url; ?>">PRINT</a></li>
+                              <?php } ?>
+                              <?php $i++; ?>
+                          <?php endforeach; ?>
+                        <?php } ?>
+                      <!-- end if documents not empty -->
+               
+                <li><a href="#">SAVE</a></li>
+                <li><a href="#">SHARE</a></li>
+              </ul>
             <br>
             <p><?php echo $item->data->pba__description_pb__c; ?> </p>
                 

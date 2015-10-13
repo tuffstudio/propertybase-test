@@ -107,6 +107,10 @@ font-family: 'Andale Mono',sans-serif;
 div.half_width{width: 50%;}
 div.panel.full_width{width: 100%;}
 
+.info_panel_nav li{
+	display: inline-block;
+}
+
 .arrange_viewing_button{
 	position: absolute;
 	top:10px;
