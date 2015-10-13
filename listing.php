@@ -78,6 +78,7 @@ include 'includes/listing-connection.php'
                     <ul>
                       <li><a id="single_view_nav_gallery" href="#">Gallery</a></li>
                       <li><a id="single_view_nav_floorplan" href="#">Floor Plan</a></li>
+                       <li><a id="single_view_nav_epc" href="#">EPC</a></li>
                       <li><a id="single_view_nav_map" href="#">Map</a></li>
                       <li><a id="single_view_nav_video" href="#">Video</a></li>
                     </ul>
@@ -93,7 +94,7 @@ include 'includes/listing-connection.php'
                             <!-- exclude floorplan from gallery flow -->
                             <?php if ($image->tags == 'Interior' || $image->tags == 'Exterior') {?>
                               <div class="gallery-cell">
-                                <img class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
+                                <img class="itemImage" src="<?php echo $image->baseurl . "/" . $image->filename; ?>"/>
                                 <?php $i++; ?>
                               </div> 
                              <?php } ?>
@@ -103,7 +104,7 @@ include 'includes/listing-connection.php'
                       <?php endif; ?>
                     <!-- END GALLERY -->
                     
-                    <!-- BEGIN END FLOORPLAN -->
+                    <!-- BEGIN FLOORPLAN -->
                     <div id="floorplan_container">
                       <?php foreach ($xmlResult->listings->listing as $item): ?>
                         
@@ -133,6 +134,23 @@ include 'includes/listing-connection.php'
                       <?php endforeach; ?>
                     </div>
                     <!-- END FLOORPLAN -->
+
+                     <!-- BEGIN EPC -->
+                    <div id="epc_container">
+                      <?php foreach ($xmlResult->listings->listing as $item): ?>
+                        
+                        <!-- if images not empty -->
+                        <?php if ($item->media->images->image != null && count($item->media->images->image) > 0): ?>
+                         <?php $i = 0; foreach ($item->media->images->image as $image): ?>
+                          <?php if ($image->tags == 'EPC') {?>
+                                <img style="max-height:700px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
+                          <?php } ?>
+                         <?php endforeach; ?>
+                        <?php endif; ?>
+
+                      <?php endforeach; ?>
+                    </div>
+                    <!-- END EPC -->
                     
                     <!-- BEGIN MAP -->
                      
