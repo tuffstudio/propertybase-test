@@ -19,6 +19,7 @@
 </head>
 
 <body>
+
 <!-- JS VARS -->
 <script>
   var lat;
@@ -26,6 +27,8 @@
   var video_url;
   var youtube_url;
   var external;
+  var epc;
+  var floorplan;
 </script>
  <!-- BEGIN ERROR -->
     <?php if (!empty($errorMessage) || !empty($DisplayQuery)|| !empty($DisplayxmlResult) ): ?>
@@ -60,13 +63,17 @@
    
 <?php 
  // VARS
+ 
+  $mainTitle = $xmlResult->listings->listing->data->name;
   $listing_type = $xmlResult->listings->listing->data->pba__listingtype__c;
   $tenure = $xmlResult->listings->listing->data->tenure__c;
+  $floorplan = false;
+  $epc = false;
 
  ?>
       <div id="result">
 
-                  <h3 class="mainTitle"><?php echo  $xmlResult->listings->listing->data->name; ?></h3>   
+                  <h3 class="mainTitle"><?php echo  $mainTitle; ?></h3>   
                   
                   <div class="single_view_navigation">
                     <ul>
@@ -86,7 +93,7 @@
                           <div class="gallery">
                             <?php $i = 0; foreach ($item->media->images->image as $image): ?>
                             <!-- exclude floorplan from gallery flow -->
-                            <?php if ($image->tags == 'Interior' || $image->tags == 'Exterior') {?>
+                            <?php if ($image->tags == 'Interior' || $image->tags == 'Exterior' || $image->tags == '' ) {?>
                               <div class="gallery-cell">
                                 <img class="itemImage" src="<?php echo $image->baseurl . "/" . $image->filename; ?>"/>
                                 <?php $i++; ?>
@@ -107,7 +114,7 @@
                          <?php $i = 0; foreach ($item->media->images->image as $image): ?>
                           <?php if ($image->tags == 'Floorplan Quick (JPG)') {?>
                                 <img style="max-height:700px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
-                          <?php } ?>
+                          <?php $floorplan=true; } ?>
                          <?php endforeach; ?>
                         <?php endif; ?>
 
@@ -118,7 +125,7 @@
                               <?php if ($document->tags == 'Floorplan Enhanced (PDF)') {?>
                               <br>
                                 <a href="<?php echo $document[$i]->url; ?>" target="_blank">Download Floor Plan PDF</a>
-                              <?php } ?>
+                              <?php $floorplan=true; } ?>
                               
                               <?php $i++; ?>
                           <?php endforeach; ?>
@@ -138,7 +145,7 @@
                          <?php $i = 0; foreach ($item->media->images->image as $image): ?>
                           <?php if ($image->tags == 'EPC') {?>
                                 <img style="max-height:700px; margin-left:200px;" class="itemImage" src="<?php echo $image[$i]->baseurl . "/" . $image[$i]->filename; ?>"/>
-                          <?php } ?>
+                          <?php $epc=true; } ?>
                          <?php endforeach; ?>
                         <?php endif; ?>
 
@@ -325,6 +332,8 @@
                   // youtube_url = video_url.replace("watch?v=", "v/");
                   youtube_url = video_url;
                   external = <?php echo ("'".$item->media->videos->video->external."';");  ?>
+                  floorplan = <?php echo ("'".$floorplan."';");  ?>
+                  epc = <?php echo ("'".$epc."';");  ?>
                 </script>
        <?php } ?>
 

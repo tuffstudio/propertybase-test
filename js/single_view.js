@@ -126,8 +126,12 @@ function pauseVid() {
     			// if video player has been initialised
     		    if(video1 != undefined){ pauseVid(); }
 
-    		     hideItem([map_view,video_view,gallery_view,epc_view]);
-				 showItem([floorplan_view]);
+    		    	if(floorplan){
+    		     		hideItem([map_view,video_view,gallery_view,epc_view]);
+				 		showItem([floorplan_view]);
+				 	}else{
+				 		alert('no Floorplan');
+				 	}
 
     		    break;
 
@@ -136,8 +140,16 @@ function pauseVid() {
     			// if video player has been initialised
     		    if(video1 != undefined){ pauseVid(); }
 
-    		    	hideItem([map_view,video_view,gallery_view,floorplan_view]);
-					showItem([epc_view]);
+    		    	if(epc)
+    		    	{
+    		    		hideItem([map_view,video_view,gallery_view,floorplan_view]);
+						showItem([epc_view]);
+					}
+					else
+					{
+						alert('no EPC image');
+					}
+
 
     		    break;
     		
