@@ -1,6 +1,6 @@
 //VARS
 
-var gallery_view = $('.gallery');
+var gallery_view = $('.ls-wp-fullwidth-container');
 var floorplan_view = $('#floorplan_container');
 var epc_view = $('#epc_container');
 var map_view = $('#map_container');
