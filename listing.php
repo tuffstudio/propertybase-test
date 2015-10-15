@@ -1,4 +1,4 @@
-<?php include 'includes/listing-connection.php' ?>
+<?php include 'includes/listing-connection.php'; ?>
 
 <html>
 
@@ -88,9 +88,13 @@
                   <div class="single_view_media">
 
                     <!-- BEGIN GALLERY -->
-                      <?php foreach ($xmlResult->listings->listing as $item): ?>
-                        <?php if ($item->media->images->image != null && count($item->media->images->image) > 0): ?>
+                      <?php foreach ($xmlResult->listings->listing as $item): ?> <!-- begin foreach $item -->
+                        
+                        <?php if ($item->media->images->image != null && count($item->media->images->image) > 0): ?> <!-- begin if images not empty -->
+                        
+                        <div class="ls-wp-fullwidth-container" style="height: 500px;">  
                           <div class="gallery">
+
                             <?php $i = 0; foreach ($item->media->images->image as $image): ?>
                             <!-- exclude floorplan from gallery flow -->
                             <?php if ($image->tags == 'Interior' || $image->tags == 'Exterior' || $image->tags == '' ) {?>
@@ -101,9 +105,62 @@
                              <?php } ?>
 
                             <?php endforeach; ?>
+                          
+                            <?php $i = 0; foreach ($item->media->images->image as $image): ?> <!-- begin foreach $image -->
+                            
+                                
+                                <?php if ($image->tags == 'Interior' || $image->tags == 'Exterior' || $image->tags == '' ) {?><!-- exclude floorplan from gallery flow -->
+                                  <div class="gallery-cell">
+                                    <img class="itemImage" src="<?php echo $image->baseurl . "/" . $image->filename; ?>"/>
+                                    <?php $i++; ?>
+                                  </div>
+                                <?php } ?>
+
+                            <?php endforeach; ?> <!-- end foreach $image -->
+
                           </div>
-                      <?php endif; ?>
+                        <!-- BEGIN THUMBNAILS -->
+        
+                                    <div class="ls-thumbnail-wrapper" style="position:fixed; z-index:50; bottom:50px; height:60px; width:auto; background: rgba(255,255,255,0.1); visibility: visible;">
+                                        <div class="ls-thumbnail" style="width: 310px;">
+                                            <div class="ls-thumbnail-inner">
+                                                <div class="ls-thumbnail-slide-container">
+                                                    <div class="ls-thumbnail-slide" style="height: 60px; margin-left: 0px;">
+        
+                                                          
+                                                          <?php $i = 0; foreach ($item->media->images->image as $image): ?>
+                                                            
+                                                            <!-- exclude floorplan from gallery flow -->
+                                                            <?php if ($image->tags == 'Interior' || $image->tags == 'Exterior' || $image->tags == '' ) {?>
+                                                              
+                                                              <a class="ls-thumb-<?php echo $i; ?>" href="#" style="width: 100px; height: 60px;">
+        
+                                                                <!-- <img class="itemImage" src="<?php echo $image->baseurl . "/" . $image->filename; ?>"/> -->
+                                                                <?php $imgurl = $image->baseurl . "/" . $image->filename; ?>
+                                                                <img class="" src="<?php echo $imgurl; ?>" style="opacity: 1; width: 100px; height: 60px;">
+                                                                <!-- <img class="" src="phpThumb/phpThumb.php?src=img/poster.jpg&amp;w=100" style="opacity: 1;"> -->
+        
+                                                                
+                                                                <?php $i++; ?>
+                                                              
+                                                              </a>
+                                                          
+                                                            <?php } ?>
+        
+                                                      <?php endforeach; ?>
+        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <!-- END THUMBNAILS -->
+                          </div>  
+                        <?php endif; ?> <!-- begin if images not empty -->
+
                     <!-- END GALLERY -->
+
+                            
                     
                     <!-- BEGIN FLOORPLAN -->
                     <div id="floorplan_container">
