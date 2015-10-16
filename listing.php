@@ -1,4 +1,6 @@
-<?php include 'includes/listing-connection.php'; ?>
+<?php 
+  include 'includes/listing-connection.php'; 
+?>
 
 <html>
 
@@ -64,6 +66,8 @@
 <?php 
  // VARS
  
+  // ini_set('memory_limit','256M');
+
   $mainTitle = $xmlResult->listings->listing->data->name;
   $listing_type = $xmlResult->listings->listing->data->pba__listingtype__c;
   $tenure = $xmlResult->listings->listing->data->tenure__c;
@@ -95,16 +99,7 @@
                         <div class="ls-wp-fullwidth-container" style="height: 500px;">  
                           <div class="gallery">
 
-                            <?php $i = 0; foreach ($item->media->images->image as $image): ?>
-                            <!-- exclude floorplan from gallery flow -->
-                            <?php if ($image->tags == 'Interior' || $image->tags == 'Exterior' || $image->tags == '' ) {?>
-                              <div class="gallery-cell">
-                                <img class="itemImage" src="<?php echo $image->baseurl . "/" . $image->filename; ?>"/>
-                                <?php $i++; ?>
-                              </div> 
-                             <?php } ?>
-
-                            <?php endforeach; ?>
+                           
                           
                             <?php $i = 0; foreach ($item->media->images->image as $image): ?> <!-- begin foreach $image -->
                             
@@ -122,11 +117,11 @@
                         <!-- BEGIN THUMBNAILS -->
         
                                     <div class="ls-thumbnail-wrapper" style="position:fixed; z-index:50; bottom:50px; height:60px; width:auto; background: rgba(255,255,255,0.1); visibility: visible;">
-                                        <div class="ls-thumbnail" style="width: 310px;">
+                                        <div class="ls-thumbnail">
                                             <div class="ls-thumbnail-inner">
                                                 <div class="ls-thumbnail-slide-container">
                                                     <div class="ls-thumbnail-slide" style="height: 60px; margin-left: 0px;">
-        
+          
                                                           
                                                           <?php $i = 0; foreach ($item->media->images->image as $image): ?>
                                                             
@@ -135,11 +130,7 @@
                                                               
                                                               <a class="ls-thumb-<?php echo $i; ?>" href="#" style="width: 100px; height: 60px;">
         
-                                                                <!-- <img class="itemImage" src="<?php echo $image->baseurl . "/" . $image->filename; ?>"/> -->
-                                                                <?php $imgurl = $image->baseurl . "/" . $image->filename; ?>
-                                                                <img class="" src="<?php echo $imgurl; ?>" style="opacity: 1; width: 100px; height: 60px;">
-                                                                <!-- <img class="" src="phpThumb/phpThumb.php?src=img/poster.jpg&amp;w=100" style="opacity: 1;"> -->
-        
+                                                                <img src="includes/show_image.php?file=<?php echo urldecode($image->url); ?>" /> 
                                                                 
                                                                 <?php $i++; ?>
                                                               
