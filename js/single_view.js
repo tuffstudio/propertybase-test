@@ -19,6 +19,7 @@ function hideItem(items, opacity)
 				if(opacity)
 				{
 					items[i].css({opacity: 0.0, visibility: "hidden"}).animate({opacity: 0}, 200);
+					
 				}
 				else
 				{
@@ -102,6 +103,7 @@ function pauseVid() {
     		    // if lat & lng defined load map
     		    if(lat != undefined && lng != undefined){
 
+
     		    		hideItem([gallery_view,video_view,floorplan_view,epc_view]);
     		    		showItem([map_view]);
 
@@ -116,6 +118,7 @@ function pauseVid() {
     			// if video player has been initialised
     		    if(video1 != undefined){ pauseVid(); }
 
+    		    	// map_view.css('z-index', '0');
     		     	hideItem([map_view,video_view,floorplan_view,epc_view]);
 					showItem([gallery_view]);
 

@@ -144,8 +144,8 @@ ul.itemFacts{
 
 h3.mainTitle{
 	position: absolute;
-	left:50px;
-	top:100px;
+	left:150px;
+	top:110px;
 	z-index: 100;
 }
 
@@ -176,7 +176,7 @@ h3.mainTitle{
 #map_container{
 	top:90px;
 	left:0;
-	z-index: -1!important;
+	z-index: 0;
 	overflow:hidden;
 	height:500px;
 	width:100%;
