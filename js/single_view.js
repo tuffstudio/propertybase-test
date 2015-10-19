@@ -103,7 +103,7 @@ function pauseVid() {
     		    // if lat & lng defined load map
     		    if(lat != undefined && lng != undefined){
 
-
+    		    		map_view.css('z-index', '0');
     		    		hideItem([gallery_view,video_view,floorplan_view,epc_view]);
     		    		showItem([map_view]);
 
@@ -118,7 +118,6 @@ function pauseVid() {
     			// if video player has been initialised
     		    if(video1 != undefined){ pauseVid(); }
 
-    		    	// map_view.css('z-index', '0');
     		     	hideItem([map_view,video_view,floorplan_view,epc_view]);
 					showItem([gallery_view]);
 
