@@ -211,9 +211,11 @@
                        
                         function init_map(){
                           var myOptions = {
-                            zoom:14,
+                            zoom:16,
                             center:new google.maps.LatLng(lat,lng),
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                            mapTypeId: google.maps.MapTypeId.ROADMAP,
+                            featureType: "all",
+                            elementType: "all"
                           };
 
                             map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
