@@ -211,7 +211,7 @@
                       <div class="map_points_of_interest">
                         <fieldset>
                             <legend>Points of Interest Options</legend>
-                            <input type="checkbox" name="action" id="attraction" value="attraction" /><label for="attraction">Attraction</label><br />
+                            <input type="checkbox" name="action" id="school" value="school" /><label for="school">School</label><br />
                             <input type="checkbox" name="action" id="business" value="business"  /><label for="business">Business</label><br />
                             <input type="checkbox" name="action" id="government" value="government" /><label for="government">Government</label><br />
                         </fieldset>

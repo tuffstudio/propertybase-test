@@ -5,29 +5,62 @@ var floorplan_view = $('#floorplan_container');
 var epc_view = $('#epc_container');
 var map_view = $('#map_container');
 var video_view = $('#myvid');
-// var single_view_divs = $('.single_view_media > div');
 var description_view = $('.single_view_info.description');
 var arrange_view = $('.single_view_info.arrange');
-
 var video1;
 
 // GOOGLE MAP
 function init_map(){
+
+// STYLED MAP
+	var roadAtlasStyles = [
+    {
+        featureType: "poi.school",
+        elementType: "labels",
+        stylers: [
+              { visibility: "off" }
+        ]
+    }
+  	];
+
+  var styledMapOptions = {
+    	name: 'US Road Atlas'
+  	};
+
+
+// MY STLES MAP
+
+	var myStyles =[
+    {
+        featureType: "poi.school",
+        elementType: "labels",
+        stylers: [
+              { visibility: "off" }
+        ]
+    }
+	];
+
 	var myOptions = {
 	    zoom:16,
 	    center:new google.maps.LatLng(lat,lng),
-	    mapTypeId: google.maps.MapTypeId.ROADMAP,
-	    featureType: "all",
-	    elementType: "all"
+	    mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 
 	map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
+	
 	marker = new google.maps.Marker({
-  	map: map,
-  	position: new google.maps.LatLng(lat,lng)
-});
+  		map: map,
+  		position: new google.maps.LatLng(lat,lng)
+	});
 
 	infowindow = new google.maps.InfoWindow({content:"<b>"+property_name+"</b><br/>"+property_address });
+
+  	var usRoadMapType = new google.maps.StyledMapType(
+      roadAtlasStyles, styledMapOptions);
+
+  	map.mapTypes.set('usroadatlas', usRoadMapType);
+  	map.setMapTypeId('usroadatlas');
+
 	google.maps.event.addListener(marker, "click", function(){
 		infowindow.open(map,marker);});
 		infowindow.open(map,marker);}
@@ -222,12 +255,12 @@ function pauseVid() {
 		// MAP CHECKBOXES
 		$('.map_points_of_interest').on('change', 'input[type=checkbox]', function(event) {
 			event.preventDefault();
-			/* Act on the event */
 
 			if( $(this).is(':checked') ){
-				alert($(this).val()+" wasn't checked");
+				// alert($(this).val()+" wasn't checked");
+				map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 			}else{
-				alert($(this).val()+" was checked");
+				// alert($(this).val()+" was checked");
 			}
 
 		});
