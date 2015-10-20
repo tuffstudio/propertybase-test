@@ -181,7 +181,18 @@ h3.mainTitle{
 	height:500px;
 	width:100%;
 	position: absolute!important; 
-	transition: opacity .55s ease-in-out;
+	/*opacity: 0;*/
+	/*visibility: hidden;*/
+	/*transition: opacity .55s ease-in-out;*/
+}
+
+.map_points_of_interest{
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+	z-index: 100;
+	padding: 10px;
+	background: rgba(255,255,255,0.8);
 }
 
 /*/////// FLICKITY*/
@@ -189,6 +200,8 @@ h3.mainTitle{
 .gallery{
 	transition: opacity .55s ease-in-out;
 }
+
+div.flickity-viewport{background: #ccc;}
 
 /* gallery height */
 /*.gallery {

@@ -26,6 +26,8 @@
 <script>
   var lat;
   var lng;
+  var property_name;
+  var property_address;
   var video_url;
   var youtube_url;
   var external;
@@ -206,34 +208,25 @@
                       <div id="map_container">
                         <div id="gmap_canvas" style="height:500px;width:100%;"></div>
                             <style>#gmap_canvas img{max-width:none!important;background:none!important; }</style>
-                        </div>
+                      <div class="map_points_of_interest">
+                        <fieldset>
+                            <legend>Points of Interest Options</legend>
+                            <input type="checkbox" name="action" id="attraction" value="attraction" /><label for="attraction">Attraction</label><br />
+                            <input type="checkbox" name="action" id="business" value="business"  /><label for="business">Business</label><br />
+                            <input type="checkbox" name="action" id="government" value="government" /><label for="government">Government</label><br />
+                        </fieldset>
+                      </div>
+                      </div>
                       <script type="text/javascript"> 
                        
-                        function init_map(){
-                          var myOptions = {
-                            zoom:16,
-                            center:new google.maps.LatLng(lat,lng),
-                            mapTypeId: google.maps.MapTypeId.ROADMAP,
-                            featureType: "all",
-                            elementType: "all"
-                          };
-
-                            map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
-                            marker = new google.maps.Marker({
-                              map: map,
-                              position: new google.maps.LatLng(lat,lng)
-                            });
-
-                            infowindow = new google.maps.InfoWindow({content:"<b><?php echo  $xmlResult->listings->listing->data->name; ?></b><br/><?php echo  $xmlResult->listings->listing->data->pba__address_pb__c; ?>" });
-                            google.maps.event.addListener(marker, "click", function(){
-                              infowindow.open(map,marker);});
-                              infowindow.open(map,marker);}
+                        
 
                         // check if latituee and longitude exists and init map is both does
                          <?php if ( !empty($item->data->pba__latitude_pb__c) && !empty($item->data->pba__longitude_pb__c) ){ ?> 
                             lat =  <?php echo  $item->data->pba__latitude_pb__c; ?>;
                             lng =  <?php echo  $item->data->pba__longitude_pb__c; ?>;     
-                            google.maps.event.addDomListener(window, 'load', init_map);
+                            property_name = <?php echo  "'".$item->data->name."';" ?>;
+                            property_address = <?php echo  "'".$item->data->pba__address_pb__c."';" ?>;
                          <?php } ?>   
 
                       </script>

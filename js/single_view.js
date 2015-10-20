@@ -11,6 +11,27 @@ var arrange_view = $('.single_view_info.arrange');
 
 var video1;
 
+// GOOGLE MAP
+function init_map(){
+	var myOptions = {
+	    zoom:16,
+	    center:new google.maps.LatLng(lat,lng),
+	    mapTypeId: google.maps.MapTypeId.ROADMAP,
+	    featureType: "all",
+	    elementType: "all"
+	};
+
+	map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
+	marker = new google.maps.Marker({
+  	map: map,
+  	position: new google.maps.LatLng(lat,lng)
+});
+
+	infowindow = new google.maps.InfoWindow({content:"<b>"+property_name+"</b><br/>"+property_address });
+	google.maps.event.addListener(marker, "click", function(){
+		infowindow.open(map,marker);});
+		infowindow.open(map,marker);}
+
 ///////////// hideItem / showItem
 function hideItem(items, opacity)
 	{
@@ -103,6 +124,9 @@ function pauseVid() {
     		    // if lat & lng defined load map
     		    if(lat != undefined && lng != undefined){
 
+    		    	if( $('#gmap_canvas').is(':empty') ){
+    		    		init_map();
+    		    	}
     		    		map_view.css('z-index', '0');
     		    		hideItem([gallery_view,video_view,floorplan_view,epc_view]);
     		    		showItem([map_view]);
@@ -181,19 +205,32 @@ function pauseVid() {
 		}
 	})
 
-	// ARRANGE VIEWING BUTTON
-	$('.arrange_viewing_button.open').on('click',function(event){
-		event.preventDefault(); 
-		hideItem([description_view],true);
-		showItem([arrange_view],true);
+		// ARRANGE VIEWING BUTTON
+		$('.arrange_viewing_button.open').on('click',function(event){
+			event.preventDefault(); 
+			hideItem([description_view],true);
+			showItem([arrange_view],true);
+	
+		})
 
-	})
+		$('.arrange_viewing_button.close').on('click',function(event){
+			event.preventDefault(); 
+			hideItem([arrange_view],true);
+			showItem([description_view],true);
+		})
 
-	$('.arrange_viewing_button.close').on('click',function(event){
-		event.preventDefault(); 
-		hideItem([arrange_view],true);
-		showItem([description_view],true);
-	})
+		// MAP CHECKBOXES
+		$('.map_points_of_interest').on('change', 'input[type=checkbox]', function(event) {
+			event.preventDefault();
+			/* Act on the event */
+
+			if( $(this).is(':checked') ){
+				alert($(this).val()+" wasn't checked");
+			}else{
+				alert($(this).val()+" was checked");
+			}
+
+		});
 	
 	});
 
