@@ -1,4 +1,5 @@
 // VARS
+var $j = jQuery.noConflict();
 var $rslts;
 var $grid;
 
@@ -10,20 +11,20 @@ function showValue(val,slidernum) {
 }
 /* we often need a function to set the slider values on page load */
 function setValue(val,num) {
-  $("#slider"+num).value = val;
+  $j("#slider"+num).value = val;
   showValue(val,num);
 }
 
 
 // clearForm
 function clearForm() { 
-                $form = $('fieldset#parameters');
+                $form = $j('fieldset#parameters');
                 $form.find('input').val('');
                 // $form.find('input[type=checkbox]').attr('checked', false);
                 $form.find('option:selected').attr('selected', false);
 
                 $form.find('.select').each(function() {
-                    var $element = $(this);
+                    var $element = $j(this);
                     var $select = $element.find('select');
                     var $value = $element.find('.select-value');
 
@@ -65,22 +66,22 @@ function clearForm() {
 // layoutButtonActive
 	function layoutButtonActive(currentLayout){
 		
-		$('.view a').removeClass('active');
-		$('#'+currentLayout).addClass('active');
+		$j('.view a').removeClass('active');
+		$j('#'+currentLayout).addClass('active');
 		
 	}
 
 
 // DOCUMENT READY - 2st
-	$(document).ready(function() {
+	$j(document).ready(function() {
 
-		$rslts = $('#results');
-		$grid = $('.grid');
+		$rslts = $j('#results');
+		$grid = $j('.grid');
 
 
 		// COOKIE CHECK - 1st
-			$(function() {
-				var cc = $.cookie('list_grid');
+			$j(function() {
+				var cc = $j.cookie('list_grid');
 				if (cc == 'g') {
 					layoutButtonActive('grid');
 					$rslts.removeClass('list').addClass('grid');
@@ -92,20 +93,20 @@ function clearForm() {
 			});
 		
 	//LAYOUT CHANGE BUTTONS
-		$('#grid').click(function() {
+		$j('#grid').click(function() {
 			$rslts.fadeOut(300, function() {
-				$(this).removeClass('list').addClass('grid').fadeIn(300);
-				$.cookie('list_grid', 'g');
+				$j(this).removeClass('list').addClass('grid').fadeIn(300);
+				$j.cookie('list_grid', 'g');
 				inintMsnry();
 			});
 			layoutButtonActive('grid');
 			return false;
 		});
 		
-		$('#list').click(function() {
+		$j('#list').click(function() {
 			$rslts.fadeOut(300, function() {
-				$(this).removeClass('grid').addClass('list').fadeIn(300);
-				$.cookie('list_grid', null);
+				$j(this).removeClass('grid').addClass('list').fadeIn(300);
+				$j.cookie('list_grid', null);
 				killMsnry();
 			});
 			layoutButtonActive('list');
@@ -118,12 +119,12 @@ function clearForm() {
  //    	$(this).closest("form").submit();
 	// });
 
-	$('form#theForm').on('change', 'input, select', function() {
-		$(this).closest("form").submit();
+	$j('form#theForm').on('change', 'input, select', function() {
+		$j(this).closest("form").submit();
 	});
 
 	// Clear Filters
-	$('.js-clear-all-filters').on('click',function(e){ 
+	$j('.js-clear-all-filters').on('click',function(e){ 
 		e.preventDefault();
 		clearForm();
 	})
@@ -132,7 +133,7 @@ function clearForm() {
 	});
 
 // WINDOW LOAD - 3rd
-	$(window).load(function(){
+	$j(window).load(function(){
 
    		// inintMsnry();
 

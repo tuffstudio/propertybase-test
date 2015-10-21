@@ -1,12 +1,12 @@
 //VARS
-
-var gallery_view = $('.ls-wp-fullwidth-container');
-var floorplan_view = $('#floorplan_container');
-var epc_view = $('#epc_container');
-var map_view = $('#map_container');
-var video_view = $('#myvid');
-var description_view = $('.single_view_info.description');
-var arrange_view = $('.single_view_info.arrange');
+var $j = jQuery.noConflict();
+var gallery_view = $j('.ls-wp-fullwidth-container');
+var floorplan_view = $j('#floorplan_container');
+var epc_view = $j('#epc_container');
+var map_view = $j('#map_container');
+var video_view = $j('#myvid');
+var description_view = $j('.single_view_info.description');
+var arrange_view = $j('.single_view_info.arrange');
 var video1;
 
 // GOOGLE MAP
@@ -105,7 +105,7 @@ function Initialize_Unversal_Player()
 		if(external == 'false') 
 			{
 				'use strict';
-				$('#myvid').html('<div class="px-video-img-captions-container"><div class="px-video-captions hide"></div><div class="px-video-wrapper"><video poster="img/poster.jpg" class="px-video" controls ><source src='+video_url+' type="video/mp4" /><div><a href=' + video_url + '><img src="img/poster.jpg" width="640" height="360" alt="download video" /></a></div></video></div></div><div class="px-video-controls"></div>');
+				$j('#myvid').html('<div class="px-video-img-captions-container"><div class="px-video-captions hide"></div><div class="px-video-wrapper"><video poster="img/poster.jpg" class="px-video" controls ><source src='+video_url+' type="video/mp4" /><div><a href=' + video_url + '><img src="img/poster.jpg" width="640" height="360" alt="download video" /></a></div></video></div></div><div class="px-video-controls"></div>');
 		
 				//init UVP
 				video1 = new InitPxVideo({
@@ -122,7 +122,7 @@ function Initialize_Unversal_Player()
 			}
 		else if(external === 'true') 
 			{
-				$('#myvid').html('<iframe width="100%" height="500" src="' + youtube_url + '"></iframe>');
+				$j('#myvid').html('<iframe width="100%" height="500" src="' + youtube_url + '"></iframe>');
 			}
 	}
 
@@ -141,14 +141,14 @@ function pauseVid() {
 }
 
 // DOCUMENT READY - 2st
-	$(document).ready(function() {
+	$j(document).ready(function() {
 		
 	//LAYOUT CHANGE BUTTONS LOGIC
 
-	$('.single_view_navigation ul li').on('click','a',function(event){
+	$j('.single_view_navigation ul li').on('click','a',function(event){
 		event.preventDefault();
 		event.stopPropagation();
-		switch( $(this).attr('id') ) {
+		switch( $j(this).attr('id') ) {
     		case 'single_view_nav_map': 
     			
     			// if video player has been initialised
@@ -157,7 +157,7 @@ function pauseVid() {
     		    // if lat & lng defined load map
     		    if(lat != undefined && lng != undefined){
 
-    		    	if( $('#gmap_canvas').is(':empty') ){
+    		    	if( $j('#gmap_canvas').is(':empty') ){
     		    		init_map();
     		    	}
     		    		map_view.css('z-index', '0');
@@ -256,7 +256,7 @@ function pauseVid() {
 		$('.map_points_of_interest').on('change', 'input[type=checkbox]', function(event) {
 			event.preventDefault();
 
-			if( $(this).is(':checked') ){
+			if( $j(this).is(':checked') ){
 				// alert($(this).val()+" wasn't checked");
 				map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 			}else{
@@ -268,10 +268,10 @@ function pauseVid() {
 	});
 
 // WINDOW LOAD - 3rd
-	$(window).load(function(){
+	$j(window).load(function(){
 
    		// Initialize flickity
-   		$('.gallery').flickity({
+   		$j('.gallery').flickity({
   			contain: false,
   			imagesLoaded: true,
   			lazyLoad: true
